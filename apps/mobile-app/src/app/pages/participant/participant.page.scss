@@ -1,0 +1,85 @@
+.controls {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.empty {
+  opacity: 0.7;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.hint {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 1rem;
+}
+
+.join-url {
+  font-size: 0.75rem;
+  word-break: break-all;
+  opacity: 0.65;
+  margin-top: 0.25rem;
+}
+
+:host ion-content.in-call-mode {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+:host ion-content:not(.in-call-mode) {
+  --padding-start: var(--ion-padding, 16px);
+  --padding-end: var(--ion-padding, 16px);
+}
+
+.meeting.in-call-meeting {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  z-index: 1;
+}
+
+.native-call-surface.in-call-jitsi {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.leave-call-btn {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  z-index: 10000;
+  min-height: 48px;
+  min-width: min(280px, calc(100vw - 2rem));
+  margin: 0;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  font-size: 1rem;
+  font-weight: 600;
+}

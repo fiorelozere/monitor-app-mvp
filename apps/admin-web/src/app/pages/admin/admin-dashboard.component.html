@@ -1,0 +1,65 @@
+<header class="page-header">
+  <h1>Admin Monitoring</h1>
+</header>
+
+<main class="page-content">
+  <div class="list-header">
+    <h2>Active calls</h2>
+    <button
+      type="button"
+      class="btn-refresh"
+      (click)="loadActiveCalls()"
+      [disabled]="loading"
+      aria-label="Refresh"
+    >
+      ↻
+    </button>
+  </div>
+
+  @if (activeCalls.length) {
+    <ul class="call-list">
+      @for (call of activeCalls; track call.id) {
+        <li>
+          <button
+            type="button"
+            class="call-item"
+            [class.selected]="selectedCall?.id === call.id"
+            (click)="selectCall(call)"
+          >
+            <span class="call-room">{{ call.roomUuid }}</span>
+            <span class="call-meta">Session id: {{ call.id }}</span>
+            <span class="call-meta">{{ formatCreatedAt(call.createdAt) }}</span>
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">
+      @if (loading) {
+        Loading…
+      } @else {
+        No active calls.
+      }
+    </p>
+  }
+
+  @if (monitoring && selectedCall) {
+    <section class="monitor-panel">
+      <p class="room-label">Monitoring {{ selectedCall.roomUuid }}</p>
+      <div class="admin-actions">
+        <button type="button" class="btn btn-warning" (click)="intervene()">
+          Intervene
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="terminateCall()"
+          [disabled]="terminating"
+        >
+          {{ terminating ? 'Ending…' : 'Terminate Call' }}
+        </button>
+      </div>
+      <div #jitsiContainer class="jitsi-container"></div>
+    </section>
+  }
+</main>

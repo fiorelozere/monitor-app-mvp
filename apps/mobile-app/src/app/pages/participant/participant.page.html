@@ -1,0 +1,70 @@
+<ion-header *ngIf="!inCall">
+  <ion-toolbar>
+    <ion-title>Participant</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="inCall" [class.in-call-mode]="inCall" [class.ion-padding]="!inCall">
+  <ng-container *ngIf="!inCall">
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div class="controls">
+      <ion-button expand="block" (click)="startCall()" [disabled]="starting || joining">
+        {{ starting ? 'Starting…' : 'Start call' }}
+      </ion-button>
+    </div>
+
+    <div class="list-header">
+      <h2>Active calls</h2>
+      <ion-button fill="clear" size="small" (click)="loadActiveCalls()" [disabled]="loadingCalls">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-list *ngIf="activeCalls.length; else emptyState">
+      <ion-item *ngFor="let call of activeCalls">
+        <ion-label>
+          <h3>{{ call.roomUuid }}</h3>
+          <p>{{ formatCreatedAt(call.createdAt) }}</p>
+          <p class="join-url">{{ joinUrl(call) }}</p>
+        </ion-label>
+        <ion-button
+          slot="end"
+          fill="outline"
+          size="small"
+          (click)="joinCall(call)"
+          [disabled]="joining || starting"
+        >
+          Join
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #emptyState>
+      <p class="empty" *ngIf="!loadingCalls">No active calls.</p>
+      <p class="empty" *ngIf="loadingCalls">Loading…</p>
+    </ng-template>
+
+    <p class="hint" *ngIf="activeCalls.length">
+      Paste the join URL on another device to test multi-device. Native Jitsi runs on Android and iOS only.
+    </p>
+    <p class="hint" *ngIf="activeCalls.length && isLocalhostHost()">
+      On phones or tablets, replace localhost in the join URL with this computer's LAN IP (e.g. 192.168.x.x).
+    </p>
+  </ng-container>
+
+  <div class="meeting in-call-meeting" *ngIf="inCall">
+    <div class="native-call-surface in-call-jitsi"></div>
+    <ion-button
+      class="leave-call-btn"
+      color="danger"
+      expand="block"
+      (click)="leaveCall()"
+      [disabled]="leaving"
+    >
+      Leave call
+    </ion-button>
+  </div>
+</ion-content>

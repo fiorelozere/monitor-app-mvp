@@ -1,0 +1,143 @@
+.page-header {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 1rem 1.25rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.page-content {
+  padding: 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.btn-refresh {
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.btn-refresh:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.btn-refresh:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.call-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.call-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: #fff;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.call-item:last-child {
+  border-bottom: none;
+}
+
+.call-item:hover {
+  background: #f8f9fb;
+}
+
+.call-item.selected {
+  background: rgba(30, 58, 95, 0.1);
+}
+
+.call-room {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.call-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.empty {
+  opacity: 0.7;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.monitor-panel {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.room-label {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.btn-warning {
+  background: #d68910;
+}
+
+.btn-danger {
+  background: #c0392b;
+}
+
+.btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.jitsi-container {
+  min-height: 50vh;
+  width: 100%;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
