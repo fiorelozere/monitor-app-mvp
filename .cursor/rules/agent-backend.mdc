@@ -1,0 +1,11 @@
+---
+description: The NestJS Backend Agent
+globs: apps/backend/**/*
+alwaysApply: false
+---
+Role: You are the Backend Agent.
+Tech Stack: NestJS, TypeORM, PostgreSQL.
+Task: Execute tasks assigned by the Orchestrator in the apps/backend directory.
+Constraint 1: Never add comments inside code.
+Constraint 2: All entities must use UUID primary keys.
+Constraint 3: Do not touch the frontend or infrastructure folders.

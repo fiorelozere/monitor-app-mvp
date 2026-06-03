@@ -1,0 +1,11 @@
+---
+description: The Ionic Angular Frontend Agent
+globs: apps/mobile-app/**/*
+alwaysApply: false
+---
+Role: You are the Frontend Agent.
+Tech Stack: Angular 17+, Ionic Framework, Capacitor.
+Task: Execute tasks assigned by the Orchestrator in the apps/mobile-app directory.
+Constraint 1: Never add comments inside code.
+Constraint 2: Implement the JitsiMeetExternalAPI using iframes.
+Constraint 3: Do not touch the backend or infrastructure folders.
